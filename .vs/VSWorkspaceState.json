@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\admin",
+    "\\images",
+    "\\includes"
   ],
+  "SelectedNode": "\\admin\\add_categories.php",
   "PreviewInSolutionExplorer": false
 }
