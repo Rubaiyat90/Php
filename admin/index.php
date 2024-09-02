@@ -36,25 +36,12 @@
                     <a href="view_products.php">Home</a>
                 </li>
                 <li>
-                    <a href="index.php?add_products">Add products</a>
+                    <a href="add_products.php">Add products</a>
                 </li>
                 <li>
                     <a href="index.php?add_categories">Add categories</a>
                 </li>
             </ul>
-        </div>
-        <div id="page-content-wrapper">
-            <div class="container-fluid m-3">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <?php 
-                            if(isset($_GET['add_products'])){
-                                include('add_products.php');
-                            }
-                        ?>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="page-content-wrapper">
             <div class="container-fluid m-3">
