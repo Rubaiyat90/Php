@@ -5,10 +5,12 @@
     $product_description=$_POST['product_description'];
     $product_keyword=$_POST['product_keyword'];
     $product_category=$_POST['product_category'];
-    $product_price=$_POST['product_price'];
-
+    
     $product_file=$_FILES['product_file']['name'];
     $tmp_image=$_FILES['product_file']['tmp_name'];
+
+    $product_price=$_POST['product_price'];
+
 
     if($product_title=='' or $product_description=='' or $product_keyword=='' or $product_category=='' or $product_price=='' or $product_file=='' ){
       echo "<script>alert('Please fill up all forms')</script>";
@@ -16,7 +18,7 @@
     }
     else{
       move_uploaded_file($tmp_image,"./images/$product_file");
-      $insert="insert into `products` (product_title,product_description,product_keyword,category_id,product_file,product_price) values ('$product_title','$product_description','$product_keyword','$product_category','$product_price','$product_file')";
+      $insert="insert into `products` (product_title,product_description,product_keyword,category_id,product_file,product_price) values ('$product_title','$product_description','$product_keyword','$product_category','$product_file','$product_price')";
       $result_insert=mysqli_query($conn,$insert);
       if($result_insert){
         echo "<script>alert('Product inserted successfully')</script>";
