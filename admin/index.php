@@ -55,9 +55,11 @@
                             if(isset($_GET['add_products'])){
                                 include('add_products.php');
                             }
-
                             if(isset($_GET['add_categories'])){
                                 include('add_categories.php');
+                            }
+                            if(isset($_GET['edit_products'])){
+                                include('edit_products.php');
                             }
                         ?>
                     </div>

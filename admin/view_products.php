@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         .product_file_size{
-            width: 10%;
+            width: 10px;
             object-fit: contain;
         }
     </style>
@@ -22,7 +22,7 @@
   <body>
     <table class="table">
         <thead class="thead-dark">
-            <tr>
+            <tr class="text-center">
                 <th>Serial number</th>
                 <th>Product title</th>
                 <th>Product description</th>
@@ -30,6 +30,7 @@
                 <th>Product category</th>
                 <th>Product image</th>
                 <th>Product price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,7 @@
                     $result=mysqli_query($conn,$get_products);
                     $number=0;
                     while($row=mysqli_fetch_assoc($result)){
+                        $product_id=$row['product_id'];
                         $product_title=$row['product_title'];
                         $product_description=$row['product_description'];
                         $product_keyword=$row['product_keyword'];
@@ -45,16 +47,18 @@
                         $product_file=$row['product_file'];
                         $product_price=$row['product_price'];
                         $number++;
-                        echo " 
-                            <tr class='text-center'>
-                                <td>$number</td>
-                                <td>$product_title</td>
-                                <td>$product_description</td>
-                                <td>$product_keyword</td>
-                                <td>$category_id</td>
-                                <td><img src='./images/$product_file' class='product_file_size'/></td>
-                                <td>$product_price /-</td>   
-                            </tr>";
+                ?>
+                <tr class='text-center'>
+                    <td><?php echo $number;?></td>
+                    <td><?php echo $product_title;?></td>
+                    <td><?php echo $product_description;?></td>
+                    <td><?php echo $product_keyword;?></td>
+                    <td><?php echo $category_id;?></td>
+                    <td><img src='./images/<?php echo $product_file;?>' class='product_file_size'/></td>
+                    <td><?php echo $product_price;?>/-</td>   
+                    <td><button class='btn btn-success'><a href='index.php?edit_products=<?php echo $product_id?>' class='text-light'>Edit</a></button></td>  
+                </tr>            
+                <?php
                     }
                 ?>
         </tbody>
