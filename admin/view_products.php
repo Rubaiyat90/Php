@@ -56,7 +56,10 @@
                     <td><?php echo $category_id;?></td>
                     <td><img src='./images/<?php echo $product_file;?>' class='product_file_size'/></td>
                     <td><?php echo $product_price;?>/-</td>   
-                    <td><button class='btn btn-success'><a href='index.php?edit_products=<?php echo $product_id?>' class='text-light'>Edit</a></button></td>  
+                    <td>
+                        <button class='btn btn-success'><a href='index.php?edit_products=<?php echo $product_id?>' class='text-light'>Edit</a></button>
+                        <button class='btn btn-danger'><a href='index.php?delete_products=<?php echo $product_id?>' class='text-light'>Delete</a></button>
+                    </td>  
                 </tr>            
                 <?php
                     }

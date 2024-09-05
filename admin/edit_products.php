@@ -101,7 +101,7 @@
                   $result_update=mysqli_query($conn,$update);
                   if($result_update){
                     echo "<script>alert('Product updated successfully')</script>";
-                    echo "<script>window.open('./view_products.php','_self')</script>";
+                    echo "<script>window.open('./index.php?view_products','_self')</script>";
                   }
                 }
               }
