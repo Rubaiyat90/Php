@@ -13,12 +13,10 @@
     $product_file=$row['product_file'];
     $product_price=$row['product_price'];
     
-    $get_category_title="SELECT p.*, c.category_title FROM `products` p JOIN `categories` c ON p.category_id = c.category_id";
+    $get_category_title="Select category_title from `categories` where category_id=$category_id";
     $result_category_title=mysqli_query($conn,$get_category_title);
-    while($row_category=mysqli_fetch_assoc($result_category_title)){
-      $category_id=$row_category['category_id'];
-      $category_title=$row_category['category_title'];
-    };
+    $row_category=mysqli_fetch_assoc($result_category_title);
+    $category_title=$row_category['category_title'];
   }
 ?>
 
@@ -56,7 +54,7 @@
             </div>
             <div class="form-outline mb-4 w-50 m-auto">
               <select class="form-select" name="product_category" id="" aria-label="Default select example">
-                <option value="<?php echo $category_id?>"><?php echo $category_title?></option>
+                <option value="<?php echo $category_id?>" seleted><?php echo $category_title?></option>
                 <?php
                   $get_categories ="Select * from `categories`";
                   $result_category =mysqli_query($conn,$get_categories);
