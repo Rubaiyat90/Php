@@ -12,12 +12,13 @@
     $category_id=$row['category_id'];
     $product_file=$row['product_file'];
     $product_price=$row['product_price'];
-
-    $get_categories ="Select * from `categories`";
-    $result_category =mysqli_query($conn,$get_categories);
-    $row_category=mysqli_fetch_assoc($result_category);
-    $category_id=$row_category['category_id'];
-    $category_title=$row_category['category_title'];
+    
+    $get_category_title="SELECT p.*, c.category_title FROM `products` p JOIN `categories` c ON p.category_id = c.category_id";
+    $result_category_title=mysqli_query($conn,$get_category_title);
+    while($row_category=mysqli_fetch_assoc($result_category_title)){
+      $category_id=$row_category['category_id'];
+      $category_title=$row_category['category_title'];
+    };
   }
 ?>
 
@@ -54,9 +55,11 @@
               <input type="text" class="form-control" id="product_keyword" name="product_keyword" value="<?php echo $product_keyword?>" placeholder="Enter product keyword" required="required">
             </div>
             <div class="form-outline mb-4 w-50 m-auto">
-              <select class="form-select" name="product_category" id="" aria-label="Default select example" required="required">
+              <select class="form-select" name="product_category" id="" aria-label="Default select example">
                 <option value="<?php echo $category_id?>"><?php echo $category_title?></option>
                 <?php
+                  $get_categories ="Select * from `categories`";
+                  $result_category =mysqli_query($conn,$get_categories);
                   while($row_category=mysqli_fetch_assoc($result_category)){
                     $category_id=$row_category['category_id'];
                     $category_title=$row_category['category_title']; 
@@ -68,7 +71,7 @@
             <div class="form-outline mb-4 w-50 m-auto">
               <label for="product_file" class="form-label">Product picture</label>
               <div class="d-flex">
-                <input class="form-control" type="file" id="product_file" name="product_file" required="required">
+                <input class="form-control" type="file" id="product_file" name="product_file">
                 <img src="./images/<?php echo $product_file?>" alt="" class="edit_image">
               </div>
             </div>
@@ -92,11 +95,16 @@
                 $product_price=$_POST['product_price'];
             
             
-                if($product_title=='' or $product_description=='' or $product_keyword=='' or $product_category=='' or $product_price=='' or $product_file=='' ){
+                if($product_title=='' or $product_description=='' or $product_keyword=='' or $product_category=='' or $product_price==''){
                   echo "<script>alert('Please fill up all forms')</script>";
                 }
                 else{
-                  move_uploaded_file($tmp_image,"./images/$product_file");
+                  if($product_file){
+                    move_uploaded_file($tmp_image,"./images/$product_file");
+                  }
+                  else{
+                    $product_file=$row['product_file'];
+                  }
                   $update="update `products` set product_title='$product_title',product_description='$product_description',product_keyword='$product_keyword',category_id='$product_category',product_file='$product_file',product_price='$product_price' where product_id=$edit_id";
                   $result_update=mysqli_query($conn,$update);
                   if($result_update){
