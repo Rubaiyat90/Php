@@ -40,6 +40,9 @@
                     <a href="index.php?add_products">Add products</a>
                 </li>
                 <li>
+                    <a href="index.php?view_categories">Categories</a>
+                </li>
+                <li>
                     <a href="index.php?add_categories">Add categories</a>
                 </li>
             </ul>
@@ -63,6 +66,15 @@
                             }
                             if(isset($_GET['delete_products'])){
                                 include('delete_products.php');
+                            }
+                            if(isset($_GET['view_categories'])){
+                                include('view_categories.php');
+                            }
+                            if(isset($_GET['edit_categories'])){
+                                include('edit_categories.php');
+                            }
+                            if(isset($_GET['delete_categories'])){
+                                include('delete_categories.php');
                             }
                         ?>
                     </div>

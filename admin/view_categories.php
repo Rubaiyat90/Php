@@ -24,41 +24,26 @@
         <thead class="thead-dark">
             <tr class="text-center">
                 <th>Serial number</th>
-                <th>Product title</th>
-                <th>Product description</th>
-                <th>Product keyword</th>
-                <th>Product category</th>
-                <th>Product image</th>
-                <th>Product price</th>
+                <th>Category title</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
                 <?php 
-                    $get_products="SELECT p.*, c.category_title FROM `products` p JOIN `categories` c ON p.category_id = c.category_id";
-                    $result=mysqli_query($conn,$get_products);
+                    $get_categories="Select * from `categories`";
+                    $result=mysqli_query($conn,$get_categories);
                     $number=0;
                     while($row=mysqli_fetch_assoc($result)){
-                        $product_id=$row['product_id'];
-                        $product_title=$row['product_title'];
-                        $product_description=$row['product_description'];
-                        $product_keyword=$row['product_keyword'];
+                        $category_id=$row['category_id'];
                         $category_title=$row['category_title'];
-                        $product_file=$row['product_file'];
-                        $product_price=$row['product_price'];
                         $number++;
                 ?>
                 <tr class='text-center'>
                     <td><?php echo $number;?></td>
-                    <td><?php echo $product_title;?></td>
-                    <td><?php echo $product_description;?></td>
-                    <td><?php echo $product_keyword;?></td>
-                    <td><?php echo $category_title;?></td>
-                    <td><img src='./images/<?php echo $product_file;?>' class='product_file_size'/></td>
-                    <td><?php echo $product_price;?>/-</td>   
+                    <td><?php echo $category_title;?></td>  
                     <td>
-                        <button class='btn btn-success'><a href='index.php?edit_products=<?php echo $product_id?>' class='text-light'>Edit</a></button>
-                        <button class='btn btn-danger'><a href='index.php?delete_products=<?php echo $product_id?>' class='text-light'>Delete</a></button>
+                        <button class='btn btn-success'><a href='index.php?edit_categories=<?php echo $category_id?>' class='text-light'>Edit</a></button>
+                        <button class='btn btn-danger'><a href='index.php?delete_categories=<?php echo $category_id?>' class='text-light'>Delete</a></button>
                     </td>  
                 </tr>            
                 <?php
