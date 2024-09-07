@@ -1,5 +1,5 @@
 <?php 
-   include('../includes/connection.php');             
+   include('../includes/connection.php');          
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,7 +30,11 @@
                 <th>Product category</th>
                 <th>Product image</th>
                 <th>Product price</th>
-                <th>Action</th>
+                <?php
+                    if(isset($_SESSION['username'])){
+                        echo "<th>Action</th>";   
+                    }
+                ?> 
             </tr>
         </thead>
         <tbody>
@@ -55,11 +59,15 @@
                     <td><?php echo $product_keyword;?></td>
                     <td><?php echo $category_title;?></td>
                     <td><img src='./images/<?php echo $product_file;?>' class='product_file_size'/></td>
-                    <td><?php echo $product_price;?>/-</td>   
-                    <td>
-                        <button class='btn btn-success'><a href='index.php?edit_products=<?php echo $product_id?>' class='text-light'>Edit</a></button>
-                        <button class='btn btn-danger'><a href='index.php?delete_products=<?php echo $product_id?>' class='text-light'>Delete</a></button>
-                    </td>  
+                    <td><?php echo $product_price;?>/-</td>
+                    <?php
+                        if(isset($_SESSION['username'])){
+                            echo "  <td>
+                                        <button class='btn btn-success'><a href='index.php?edit_products=".$product_id."'class='text-light'>Edit</a></button>
+                                        <button class='btn btn-danger'><a href='index.php?delete_products=".$product_id."' class='text-light'>Delete</a></button>
+                                    </td> ";   
+                        }
+                    ?>   
                 </tr>            
                 <?php
                     }

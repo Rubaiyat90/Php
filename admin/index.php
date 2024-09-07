@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,35 +19,43 @@
             <div class="container-fluid">
                 <img src="../images/online.jpg" class=logo>
                 <nav class="navbar navbar-expand-lg bg-info">
-                    <div class="container-fluid">
-                        <a href="" class="nav-link">Welcome Admin</a>
-                    </div>
+                    <div class='container-fluid'>   
+                    <?php
+                        if(!isset($_SESSION['username'])){
+                            echo "<a href='#' class='nav-link'>Welcome Guest</a><button class='btn btn-success'><a href='admin_login.php' class='nav-link'>Login</a></button>";       
+                        }else{
+                            echo "<a href='#' class='nav-link'>Welcome ".$_SESSION['username']."</a>"; 
+                        }
+                    ?> 
+                    </div>   
                 </nav>
             </div>
         </nav>
     </div>
     <div id="wrapper">
-
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Admin Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?view_products">Home</a>
-                </li>
-                <li>
-                    <a href="index.php?add_products">Add products</a>
-                </li>
-                <li>
-                    <a href="index.php?view_categories">Categories</a>
-                </li>
-                <li>
-                    <a href="index.php?add_categories">Add categories</a>
-                </li>
+                <?php
+                    if(!isset($_SESSION['username'])){
+                        echo "<li><a href='index.php?view_products'>Home</a></li>";       
+                    }else{
+                        echo "<li>
+                        <a href='index.php?view_products'>Home</a>
+                        </li>
+                        <li>
+                            <a href='index.php?add_products'>Add products</a>
+                        </li>
+                        <li>
+                            <a href='index.php?view_categories'>Categories</a>
+                        </li>
+                        <li>
+                            <a href='index.php?add_categories'>Add categories</a>
+                        </li>
+                        <li>
+                            <a href='admin_logout.php'>Logout</a>
+                        </li>"; 
+                    }
+                ?> 
             </ul>
         </div>
         <div id="page-content-wrapper">
@@ -80,8 +91,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>  
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
