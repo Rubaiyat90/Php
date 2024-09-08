@@ -9,11 +9,6 @@
         
         $select_query="Select * from `admin` where username='$username'";
         $result_select=mysqli_query($conn,$select_query);
-        
-        if (!$result_select) {
-            die("SQL error: " . mysqli_error($conn));
-        }
-
         $row_count=mysqli_num_rows($result_select);
         $row_data=mysqli_fetch_assoc($result_select);
 
@@ -23,10 +18,12 @@
                 echo "<script>alert('Login successful');</script>";
                 header('Location: index.php?view_products');
                 exit();
-            }else{
+            }
+            else{
                 echo "<script>alert('Incorrect password');</script>";
             }
-        }else{
+        }
+        else{
             echo "<script>alert('Wrong username or password');</script>";
         }
     }    

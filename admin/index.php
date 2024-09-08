@@ -38,7 +38,8 @@
                 <?php
                     if(!isset($_SESSION['username'])){
                         echo "<li><a href='index.php?view_products'>Home</a></li>";       
-                    }else{
+                    }
+                    else{
                         echo "<li>
                         <a href='index.php?view_products'>Home</a>
                         </li>
