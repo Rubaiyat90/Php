@@ -22,7 +22,7 @@
                     <div class='container-fluid'>   
                     <?php
                         if(!isset($_SESSION['username'])){
-                            echo "<a href='#' class='nav-link'>Welcome Guest</a><button class='btn btn-success'><a href='admin_login.php' class='nav-link'>Login</a></button>";       
+                            echo "<a href='#' class='nav-link'>Welcome Guest, Click to log in -></a><button class='btn btn-success'><a href='admin_login.php' class='nav-link'>Login</a></button>";       
                         }else{
                             echo "<a href='#' class='nav-link'>Welcome ".$_SESSION['username']."</a>"; 
                         }
@@ -43,13 +43,7 @@
                         <a href='index.php?view_products'>Home</a>
                         </li>
                         <li>
-                            <a href='index.php?add_products'>Add products</a>
-                        </li>
-                        <li>
                             <a href='index.php?view_categories'>Categories</a>
-                        </li>
-                        <li>
-                            <a href='index.php?add_categories'>Add categories</a>
                         </li>
                         <li>
                             <a href='admin_logout.php'>Logout</a>

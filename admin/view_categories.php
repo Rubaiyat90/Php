@@ -20,6 +20,8 @@
     </style>
   </head>
   <body>
+  <h3 class="text-center text-top">All Categories</h3>
+    <button class='btn btn-primary'><a href='index.php?add_categories' class='text-light'>Add New</a></button>
     <table class="table">
         <thead class="thead-dark">
             <tr class="text-center">
@@ -42,7 +44,6 @@
                     <td><?php echo $number;?></td>
                     <td><?php echo $category_title;?></td>  
                     <td>
-                        <button class='btn btn-success'><a href='index.php?edit_categories=<?php echo $category_id?>' class='text-light'>Edit</a></button>
                         <button class='btn btn-danger'><a href='index.php?delete_categories=<?php echo $category_id?>' class='text-light'>Delete</a></button>
                     </td>  
                 </tr>            

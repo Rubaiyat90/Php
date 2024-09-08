@@ -22,6 +22,7 @@
       $result_insert=mysqli_query($conn,$insert);
       if($result_insert){
         echo "<script>alert('Product inserted successfully')</script>";
+        echo "<script>window.open('./index.php?view_products','_self')</script>";
       }
     }
   }

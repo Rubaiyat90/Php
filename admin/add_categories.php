@@ -13,6 +13,7 @@
             $result=mysqli_query($conn,$insert_query);
             if($result){
                 echo "<script>alert('Category inserted successfully')</script>";
+                echo "<script>window.open('./index.php?view_categories','_self')</script>";
             }
 	    }
     }

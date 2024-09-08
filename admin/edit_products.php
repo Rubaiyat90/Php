@@ -46,7 +46,7 @@
             </div>
             <div class="form-outline mb-4 w-50 m-auto">
               <label for="product_description" class="form-label">Product description</label>
-              <input type="text" class="form-control" id="product_description" name="product_description" value="<?php echo $product_title?>" placeholder="Enter product description" required="required">
+              <input type="text" class="form-control" id="product_description" name="product_description" value="<?php echo $product_description?>" placeholder="Enter product description" required="required">
             </div>
             <div class="form-outline mb-4 w-50 m-auto">
               <label for="product_keyword" class="form-label">Product keyword</label>

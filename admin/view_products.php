@@ -14,12 +14,19 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         .product_file_size{
-            width: 10px;
+            width: 40px;
             object-fit: contain;
         }
     </style>
   </head>
   <body>
+  <h3 class="text-center text-top">All Products</h3>
+    <?php
+        if(isset($_SESSION['username'])){
+            echo "<button class='btn btn-primary'><a href='index.php?add_products' class='text-light'>Add New</a></button>";       
+            }
+        ?> 
+    
     <table class="table">
         <thead class="thead-dark">
             <tr class="text-center">
